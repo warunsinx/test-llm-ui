@@ -9,6 +9,8 @@ export default function ChatStream() {
   const [timeUsed, setTimeUsed] = useState(0);
   const [model, setModel] = useState<"gpt" | "claude">("gpt");
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
   useEffect(() => {
     if (outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
@@ -30,7 +32,7 @@ export default function ChatStream() {
     }, 1000);
 
     const sse = new EventSource(
-      `${process.env.NEXT_PUBLIC_API_URL}/chat_with_sentinel_stream?user_input=${userInput}&email=warunsinx@gmail.com&chatId=40c06271-5383-479f-9b3f-f2750a0ca6a3&model=${model}`,
+      `${API_URL}/chat_with_sentinel_stream?user_input=${userInput}&email=warunsinx@gmail.com&chatId=40c06271-5383-479f-9b3f-f2750a0ca6a3&model=${model}`,
       {
         withCredentials: true,
       }
