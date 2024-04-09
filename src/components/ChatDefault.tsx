@@ -72,7 +72,9 @@ export default function ChatDefault() {
           onChange={(e) => setModel(e.target.value as "gpt" | "claude")}
         >
           <option value="gpt">GPT</option>
-          <option value="claude">Claude</option>
+          <option disabled value="claude">
+            Claude
+          </option>
         </select>
         <button
           disabled={isLoading}
